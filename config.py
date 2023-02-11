@@ -5,4 +5,4 @@ USER_AGENT = "Instagram 126.0.0.25.121 Android (23/6.0.1; 320dpi; 720x1280; sams
 
 # Don't change these
 PROXY = {'http': f"http://{PROXY}/", 'https': f"https://{PROXY}/"} if PROXY else None
-PORT = PORT or 8081
+PORT = PORT or 8082
