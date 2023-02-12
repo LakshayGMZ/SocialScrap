@@ -8,6 +8,6 @@ class ClientSession(requests.Session):
         super().__init__()
         self.proxies = config.PROXY
         if config.USER_AGENT:
-            self.headers['User-Agent'] = config.USER_AGENT
+            self.headers['user-agent'] = config.USER_AGENT
 
 
