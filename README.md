@@ -2,7 +2,6 @@
 
 just a basic scraper
 
-
 ## TODO:
 
 - Add scrapers for more social sites.
