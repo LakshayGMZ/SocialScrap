@@ -2,11 +2,15 @@ import requests
 from datetime import datetime
 from utility.cookieGen import CookieGenerator
 from utility.client import ClientSession
+from config import ENABLE_INSTAGRAM_SELFBOT, INSTAGRAM_USERNAME, INSTAGRAM_PASSWORD
 
 
 class InstagramScraper:
     def __init__(self):
         self.session = ClientSession()
+        self.loginInfo = None
+        if ENABLE_INSTAGRAM_SELFBOT:
+            self.loginInfo = self.login(INSTAGRAM_USERNAME, INSTAGRAM_PASSWORD)
 
     def findUsersBySearchQuery(self, query):
         params = {
