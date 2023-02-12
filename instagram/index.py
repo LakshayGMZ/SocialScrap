@@ -7,9 +7,24 @@ class InstagramScraper:
     def __init__(self):
         self.session = ClientSession()
 
+    def findUsersBySearchQuery(self, query):
+        params = {
+            'context': 'blended',
+            'query': query,
+            'include_reel': 'true',
+            'search_surface': 'web_top_search',
+        }
+
+        response = self.session.get('https://www.instagram.com/api/v1/web/search/topsearch/', params=params)
+
+        if response.status_code == 200:
+            return response.json()['users']
+        else:
+            return {'error': response.status_code, 'msg': response.json()}
+
     def findUserByName(self, name):
-        cookies = CookieGenerator(self.session)
-        cookies.instagramCookie()
+        # cookies = CookieGenerator(self.session)
+        # cookies.instagramCookie()
 
         params = {
             'username': name,
@@ -22,5 +37,7 @@ class InstagramScraper:
         if response.status_code == 200:
             return response.json()
         else:
-            return {'error': 404, 'msg': "Account not found"}
+            return {'error': response.status_code, 'msg': response.json()}
+
+
 
